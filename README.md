@@ -1,4 +1,4 @@
-yangforge
+Promise Fuel Plugin
 ============
 
 Plugin description
