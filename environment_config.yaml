@@ -1,0 +1,7 @@
+attributes:
+  promise_text:
+    value: ''
+    label: 'Promise Plugin'
+    description: ''
+    weight: 25
+    type: "text"
