@@ -22,12 +22,16 @@ package_install() {
         sudo apt-get install -y nodejs
         printf "Nodejs 4.x installed\n"
     fi
-}
 
-promise_install() {
     printf "Installing YangForge...\n"
     sudo npm -g install yangforge
     printf "YangForge installed!\n"
+}
+
+promise_install() {
+    if [ -d "/usr/local/promise" ]; then
+        rm -rf /usr/local/promise
+    fi
 
     printf "Getting latest Promise from GitHub..."
     git clone https://github.com/opnfv/promise.git /usr/local/promise
@@ -36,9 +40,10 @@ promise_install() {
 
 run_promise() {
     # For now there is no INIT script used to start promise
-    # Will add that later
+    # Will add that later as a major enhancement
     cd /usr/local/promise
-    nohup yfc run opnfv-promise.yaml > /var/log/promise.log &
+    nohup yfc run --express 5050 promise.yaml > /var/log/promise.log &
+    printf "Running Promise!\n"
 }
 
 if [ ! -f "/usr/bin/node" ]; then
@@ -47,7 +52,9 @@ if [ ! -f "/usr/bin/node" ]; then
     run_promise
     exit 0
 else
-    printf "node is already installed! Skipping Nodejs 4.x installation...\n"
+    printf "node is already installed!\n"
+    printf "Skipping Nodejs 4.x installation...\n"
+    printf "Skipping YangForge installation...\n"
     promise_install
     run_promise
     exit 0
