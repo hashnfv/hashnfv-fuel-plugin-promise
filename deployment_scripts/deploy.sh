@@ -4,12 +4,16 @@
 #:
 #: https://wiki.opnfv.org/promise
 #:
-#: Version 1.1
+#: Version 1.2
 
-node_install() {
+package_install() {
     if [ ! -f "/usr/bin/curl" ]; then
         sudo apt-get -y install curl
     fi
+
+	if [ ! -f "/usr/bin/git" ]; then
+		sudo apt-get -y install git
+	fi
 
     # This assume you have nodejs installed without checking a specific version
     if [ ! -f "/usr/bin/node" ]; then
@@ -38,7 +42,7 @@ run_promise() {
 }
 
 if [ ! -f "/usr/bin/node" ]; then
-    node_install
+    package_install
     promise_install
     run_promise
     exit 0
