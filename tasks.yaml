@@ -3,4 +3,4 @@
   type: shell
   parameters:
     cmd: bash deploy.sh
-    timeout: 600
+    timeout: 1200
