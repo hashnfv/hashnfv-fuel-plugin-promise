@@ -28,14 +28,18 @@ a need to perform an `install` of this module. You simply need to
 
 ## Usage
 ```bash
-$ yfc run github:opnfv/master/opnfv-promise.yaml
+$ cd /usr/local/promise
+$ nohup yfc run --express 5050 promise.yaml > /var/log/promise.log &
+
+Please note that this is note controlled by any INIT scripts at this time.
+To re-run the plugin, just kill the PID and re-run the command above.
 ```
 
 The `yfc run` command will download/retrieve the primary application
 package from the Github repository along with any other dependency
 files/assets referenced within the YAML manifest and instantiate the
 opnfv-promise module and run REST/JSON interface by default listening
-on port 5000.
+on port 5050.
 
 You can also checkout this GIT repository or simply download the files
 into your local system and run the application.
