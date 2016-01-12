@@ -105,6 +105,7 @@ c2FjCg==
 PROMISEINIT
         base64 -d /tmp/promiseinit > /etc/init.d/promise
         chmod 755 /etc/init.d/promise
+        sudo update-rc.d promise defaults
     else
         printf "Promise INIT script already installed! Skipping...\n"
 fi
