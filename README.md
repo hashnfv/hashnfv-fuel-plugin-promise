@@ -31,7 +31,7 @@ a need to perform an `install` of this module. You simply need to
 $ cd /usr/local/promise
 $ nohup yfc run --express 5050 promise.yaml > /var/log/promise.log &
 
-Please note that this is note controlled by any INIT scripts at this time.
+Please note that this is not controlled by any INIT scripts at this time.
 To re-run the plugin, just kill the PID and re-run the command above.
 ```
 
